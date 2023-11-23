@@ -12,7 +12,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-openai_api_key="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"
+openai_api_key="add_your_api_key"
 openai.api_key=openai_api_key
 def index(request):
     return render(request,'index.html')
