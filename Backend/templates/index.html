@@ -1,0 +1,53 @@
+<!--&lt;!&ndash; chat/templates/index.html &ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Chat Room</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <textarea id="chat-log" cols="100" rows="20"></textarea><br>-->
+<!--    <input id="chat-message-input" type="text" size="100"><br>-->
+<!--    <button onclick="sendMessage()">Send</button>-->
+
+<!--    <script>-->
+<!--        var roomName = "{{ room_name }}";-->
+<!--        var chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + roomName + "/");-->
+
+<!--        chatSocket.onmessage = function(e) {-->
+<!--            var data = JSON.parse(e.data);-->
+<!--            var message = data['message'];-->
+<!--            document.querySelector('#chat-log').value += (message + '\n');-->
+<!--        };-->
+
+<!--        chatSocket.onclose = function(e) {-->
+<!--            console.error('Chat socket closed unexpectedly');-->
+<!--        };-->
+
+<!--        function sendMessage() {-->
+<!--            var messageInputDom = document.querySelector('#chat-message-input');-->
+<!--            var message = messageInputDom.value;-->
+<!--            chatSocket.send(JSON.stringify({-->
+<!--                'message': message-->
+<!--            }));-->
+<!--            messageInputDom.value = '';-->
+<!--        }-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
